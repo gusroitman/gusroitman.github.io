@@ -25,9 +25,6 @@ jobs:
         run: 
             dotnet publish  --configuration Release
             
-      # changes the base-tag in index.html from '/' to 'BlazorDemo5' to match GitHub Pages repository subdirectory
-      - name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
-        run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorDemo5\/" \/>/g' release/wwwroot/index.html
 
       - name: Change base-tag in index.html to repo name
         run: sed -i 's/<base href="\/" \/>/<base href="\/${{ env.REPO_NAME }}\/" \/>/g' $GITHUB_WORKSPACE/$PUBLISH_FOLDER/index.html
